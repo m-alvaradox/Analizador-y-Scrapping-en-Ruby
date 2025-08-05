@@ -1,0 +1,1 @@
+[ERROR SINTÁCTICO] Token inesperado: 'case' en la línea 66
