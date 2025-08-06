@@ -1,31 +1,37 @@
 # Impresion por pantalla
 puts 'Practicando Ruby'
 # Importar librerias
+# de forma correcta es con require 'nombre_de_la_libreria'
 require('open-uri')
 require('nokogiri')
 require('csv')
 
-# Crear clase
+# Crear clase principal para extraer datos
 class Extractor
   # Definir variables
-  attr_accessor :archivo, :url # Definir variables de instancia
+  attr_accessor :archivo, :url # getters y setters para las variables de instancia
 
-  # Definir constructor
+  # Definir constructor que recibe el nombre del archivo
+  # y lo inicializa
   def initialize(archivo)
     @archivo = archivo
   end
   # Definir metodos
+  # para limpiar el archivo y guardar los datos
+  # en el archivo CSV
   def limpiar(archivo)
     CSV.open(archivo, 'w') do |csv| # Abre el archivo en modo de escritura
     end
   end 
   
+  # Guarda los datos en el archivo CSV
   def guardar(archivo, datos)
     CSV.open(archivo, 'a') do |csv|
     csv << datos # Agrega una fila con los datos
     end
   end
 
+  # Obtiene los datos de la URL y los guarda en el archivo CSV
    def obtenerDatos(url)
     puts "Scrapeando #{url}..."
     confiesaloHTML = URI.open(url) # Abre la URL y devuelve un objeto File-like
